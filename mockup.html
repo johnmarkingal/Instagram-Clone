@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Mockup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            height: 40px;
+        }
+
+        .header .icons i,
+        .header .icons img {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .gif-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .gif-grid img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
+        <div class="icons">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <i class="fas fa-search" onclick="toggleModal()"></i>
+            <i class="fas fa-compass"></i>
+            <i class="fas fa-heart"></i>
+            <img src="image/dex.jpg" alt="User profile picture">
+        </div>
+    </div>
+
+    <!-- GIF Grid -->
+    <div class="gif-grid">
+        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="GIF 1">
+        <img src="https://media.giphy.com/media/l0HlRmRKRZYR6BEXq/giphy.gif" alt="GIF 2">
+        <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="GIF 3">
+        <img src="https://media.giphy.com/media/3o7TKvyXz2lm20LDsA/giphy.gif" alt="GIF 4">
+        <img src="https://media.giphy.com/media/l0HUpt2s9Pclgt9Vm/giphy.gif" alt="GIF 5">
+        <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="GIF 6">
+        <img src="https://media.giphy.com/media/3o7TKvyXz2lm20LDsA/giphy.gif" alt="GIF 7">
+    </div>
+</body>
+</html>
