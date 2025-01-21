@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        
+
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .header img {
+            height: 30px;
+        }
+        .header .search-bar {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 20px;
+            padding: 5px 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .header .search-bar input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+        }
+        .header .search-bar i {
+            color: #8e8e8e;
+        }
+        .header .icons {
+            display: flex;
+            align-items: center;
+        }
+        .header .icons i {
+            font-size: 24px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .header .icons img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 20px;
+        }
+
+        
+        .stories {
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            overflow-x: auto;
+        }
+        .story {
+            text-align: center;
+            margin-right: 15px;
+        }
+        .story img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #c13584;
+        }
+        .story p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+
+        .posts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .post {
+            width: 300px;
+            margin: 10px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+        }
+        .post img {
+            width: 100%;
+            border-bottom: 1px solid #dbdbdb;
+        }
+        .post .info {
+            padding: 10px;
+        }
+        .post .info .user {
+            display: flex;
+            align-items: center;
+        }
+        .post .info .user img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .post .info .user p {
+            font-weight: 500;
+        }
+        .post .info .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .post .info .actions i {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .post .info .actions .likes {
+            font-weight: 500;
+        }
+
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .sidebar i {
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
+        <div class="icons">
+            <i class="fas fa-home"></i>
+            <i class="fas fa-search"></i>
+            <i class="fas fa-compass"></i>
+            <i class="fas fa-heart"></i>
+            <img src="image/jay.jpg" alt="User profile picture">
+        </div>
+        
+    </div>
+    <div class="stories">
+        <div class="story">
+            <img src="image/jay.jpg" alt="Your Story">
+            <p>Your Story</p>
+        </div>
+        <div class="story">
+            <img src="image/jherv.jpg" alt="jhervin">
+            <p>Jhervin</p>
+        </div>
+        <div class="story">
+            <img src="image/mark.jpg" alt="Mark">
+            <p>Mark Lawrence</p>
+        </div>
+        <div class="story">
+            <img src="image/raf.jpg" alt="Raf">
+            <p>Rafael</p>
+        </div>
+        <div class="story">
+            <img src="image/dex.jpg" alt="Dex">
+            <p>Dexter</p>
+        </div>
+    </div>
+    <div class="posts">
+        <div class="post">
+            <img src="image/raaf.jpg" alt="Aerial view of islands and ocean with airplane wing">
+            <div class="info">
+                <div class="user">
+                    <img src="image/raf.jpg" alt="axelbelujon">
+                    <p>Rafael</p>
+                </div>
+                <div class="actions">
+                    <div>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-comment"></i>
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <p class="likes">231 likes</p>
+            </div>
+        </div>
+        <div class="post">
+            <img src="image/jherv.jpg" alt="Monkey eating">
+            <div class="info">
+                <div class="user">
+                    <img src="image/jherv.jpg" alt="Jhervin">
+                    <p>Jhervin</p>
+                </div>
+                <div class="actions">
+                    <div>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-comment"></i>
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <p class="likes">472 likes</p>
+            </div>
+        </div>
+        <div class="post">
+            <img src="image/mark.jpg" alt="Person in dark setting">
+            <div class="info">
+                <div class="user">
+                    <img src="image/mark.jpg" alt="Mark Lawrence">
+                    <p>Mark Lawrence</p>
+                </div>
+                <div class="actions">
+                    <div>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-comment"></i>
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <p class="likes">3,901 likes</p>
+            </div>
+        </div>
+        <div class="post">
+            <img src="image/jay.jpg" alt="Traditional building at night">
+            <div class="info">
+                <div class="user">
+                    <img src="image/jay.jpg" alt="Dexter">
+                    <p>Jay</p>
+                </div>
+                <div class="actions">
+                    <div>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-comment"></i>
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <p class="likes">231 likes</p>
+            </div>
+        </div>
+            </div>
+
+</body>
+</html>
