@@ -14,6 +14,7 @@
             padding: 0;
         }
 
+       
         .header {
             display: flex;
             justify-content: space-between;
@@ -25,36 +26,22 @@
             top: 0;
             z-index: 10;
         }
+
         .header img {
             height: 40px;
         }
-        .header .search-bar {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            margin: 0 20px;
-            padding: 5px 10px;
-            border: 1px solid #dbdbdb;
-            border-radius: 5px;
-            background-color: #fafafa;
-        }
-        .header .search-bar input {
-            border: none;
-            outline: none;
-            flex-grow: 1;
-        }
-        .header .search-bar i {
-            color: #8e8e8e;
-        }
+
         .header .icons {
             display: flex;
             align-items: center;
         }
+
         .header .icons i {
             font-size: 24px;
             margin-left: 20px;
             cursor: pointer;
         }
+
         .header .icons img {
             width: 30px;
             height: 30px;
@@ -62,96 +49,56 @@
             margin-left: 20px;
         }
 
-      
-        .stories {
-            display: flex;
-            padding: 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #dbdbdb;
-            overflow-x: auto;
-            scrollbar-width: none;
+        
+        .menu {
+            position: relative;
+            display: inline-block;
         }
 
-        .stories::-webkit-scrollbar {
+        .menu .menu-dropdown {
             display: none;
-        }
-
-        .story {
-            text-align: center;
-            margin-right: 20px;
-        }
-
-        .story img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 3px solid #c13584;
-        }
-
-        .story p {
-            font-size: 14px;
-            margin-top: 8px;
-            color: #262626;
-        }
-
-        /* Posts Grid */
-        .posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .post {
+            position: absolute;
+            top: 40px;
+            right: 0;
             background-color: #fff;
             border: 1px solid #dbdbdb;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            z-index: 20;
         }
 
-        .post img {
-            width: 100%;
-            border-bottom: 1px solid #dbdbdb;
+        .menu .menu-dropdown a {
+            display: block;
+            padding: 10px;
+            font-size: 14px;
+            color: #262626;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
         }
 
-        .post .info {
-            padding: 15px;
+        .menu .menu-dropdown a:hover {
+            background-color: #fafafa;
         }
 
-        .post .info .user {
-            display: flex;
-            align-items: center;
+        
+        .menu.open .menu-dropdown {
+            display: block;
         }
 
-        .post .info .user img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .post .info .user p {
-            font-weight: 500;
-            font-size: 16px;
-        }
-
-        .post .info .actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .post .info .actions i {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .post .info .actions .likes {
-            font-weight: 500;
-            font-size: 16px;
+        
+        .logout-button {
+            color: #f44336; 
+            text-align: center;
+            font-weight: bold;
         }
 
        
+        .content {
+            padding: 20px;
+        }
+
+        
         .gif-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -164,7 +111,7 @@
             border-radius: 10px;
         }
 
-      
+        
         .sidebar {
             position: fixed;
             right: 20px;
@@ -185,48 +132,67 @@
 </head>
 <body>
    
+    
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
         <div class="icons">
             <a href="index.html"><i class="fas fa-home"></i></a>
-            <i class="fas fa-search" onclick="toggleModal()"></i>
-            <i class="fas fa-compass"></i>
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-search" onclick="toggleSearchModal()"></i>
+            <a href="mockup.html"><i class="fas fa-compass"></i></a>
+            <div class="menu" id="menu">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <a href="login.html" class="logout-button">Logout</a>
+                </div>
+            </div>
             <img src="image/dex.jpg" alt="User profile picture">
         </div>
     </div>
 
-   
-<div class="content">
-    <div class="gif-grid" id="gifGrid"></div>
-</div>
+    
+    <div class="content">
+        <div class="gif-grid" id="gifGrid"></div>
+    </div>
 
-<script>
-    const gifURLs = [
-"https://media.giphy.com/media/3o6ZsWmQdPgl9SG7Di/giphy.gif",
-"https://media.giphy.com/media/3ohzdYJK1wAdPWVk88/giphy.gif",
-"https://media.giphy.com/media/l0HlNqxY4N69vjxg8/giphy.gif",
-"https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif",
-"https://media.giphy.com/media/l0Ex5F41N5iVh8q2Q/giphy.gif",
-"https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif",
-"https://media.giphy.com/media/3ohc18H1Y6Fw2G1yOY/giphy.gif",
-"https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif",
-"https://media.giphy.com/media/l0ErLEZv6RPrVJbQA/giphy.gif",
-"https://media.giphy.com/media/l2JJLZfCLHl4KgF84/giphy.gif"
-    ];
+    <script>
+       
+        const gifURLs = [
+            "https://media.giphy.com/media/3o6ZsWmQdPgl9SG7Di/giphy.gif",
+            "https://media.giphy.com/media/3ohzdYJK1wAdPWVk88/giphy.gif",
+            "https://media.giphy.com/media/l0HlNqxY4N69vjxg8/giphy.gif",
+            "https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif",
+            "https://media.giphy.com/media/l0Ex5F41N5iVh8q2Q/giphy.gif",
+            "https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif",
+            "https://media.giphy.com/media/3ohc18H1Y6Fw2G1yOY/giphy.gif",
+            "https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif",
+            "https://media.giphy.com/media/l0ErLEZv6RPrVJbQA/giphy.gif",
+            "https://media.giphy.com/media/l2JJLZfCLHl4KgF84/giphy.gif"
+        ];
 
+        
+        const totalGIFs = 100;
+        const gifGrid = document.getElementById('gifGrid');
 
-    const totalGIFs = 100;
-    const gifGrid = document.getElementById('gifGrid');
+        
+        for (let i = 0; i < totalGIFs; i++) {
+            const gifIndex = i % gifURLs.length; 
+            const img = document.createElement('img');
+            img.src = gifURLs[gifIndex];
+            img.alt = `GIF ${i + 1}`;
+            gifGrid.appendChild(img);
+        }
 
-    for (let i = 0; i < totalGIFs; i++) {
-        const gifIndex = i % gifURLs.length; 
-        const img = document.createElement('img');
-        img.src = gifURLs[gifIndex];
-        img.alt = `GIF ${i + 1}`;
-        gifGrid.appendChild(img);
-    }
-</script>
+       
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('open');
+        }
+
+        
+        function toggleSearchModal() {
+            alert("Search functionality goes here!");
+        }
+    </script>
 
 </body>
 </html>

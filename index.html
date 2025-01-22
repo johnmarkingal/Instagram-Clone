@@ -58,6 +58,7 @@
         .story {
             text-align: center;
             margin-right: 15px;
+            cursor: pointer;
         }
 
         .story img {
@@ -135,7 +136,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
             z-index: 20;
@@ -150,12 +151,106 @@
             padding: 20px;
             border-radius: 8px;
             width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #c13584;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .logout-button {
+            margin: 5px 20px;
+            padding: 10px 15px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            background-color: #3897f0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+        }
+
+        .logout-button:hover {
+            background-color: #287acb;
+        }
+
+        .menu {
+            position: relative;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 120px;
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .menu-dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Search Modal */
+        #searchModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #searchModal.active {
+            display: flex;
+        }
+
+        .search-modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
             max-width: 400px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
 
-        .modal-content input {
+        .search-modal-content input {
             width: 100%;
             padding: 12px;
             margin-bottom: 10px;
@@ -164,7 +259,7 @@
             font-size: 16px;
         }
 
-        .modal-content button {
+        .search-modal-content button {
             padding: 10px 20px;
             border: none;
             background-color: #3897f0;
@@ -174,36 +269,19 @@
             cursor: pointer;
         }
 
-        .modal-content button:hover {
+        .search-modal-content button:hover {
             background-color: #287acb;
         }
-        .logout-button {
-    margin-left: 20px;
-    padding: 5px 10px;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
-    background-color: #3897f0;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.logout-button:hover {
-    background-color: #287acb;
-}
-
-
 
     </style>
 </head>
 <body>
-    
+
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
         <div class="icons">
             <a href="index.html"><i class="fas fa-home"></i></a>
-            <i class="fas fa-search" onclick="toggleModal()"></i>
+            <i class="fas fa-search" onclick="toggleSearchModal()"></i>
             <a href="mockup.html"><i class="fas fa-compass"></i></a>
             <div class="menu">
                 <i class="fas fa-bars" onclick="toggleMenu()"></i>
@@ -214,113 +292,30 @@
             <img src="image/dex.jpg" alt="User profile picture">
         </div>
     </div>
-    <style>
-        .menu {
-            position: relative;
-        }
-    
-        .menu-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--header-bg);
-            border: 1px solid var(--header-border);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 10;
-        }
-    
-        .menu-dropdown a {
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 14px;
-        }
-    
-    </style>
-<script>
-    function toggleMenu() {
-        const menuDropdown = document.getElementById('menuDropdown');
-        menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
-    }
 
-    // Close the menu if clicked outside
-    window.onclick = function (event) {
-        const menuDropdown = document.getElementById('menuDropdown');
-        if (event.target.closest('.menu') === null) {
-            menuDropdown.style.display = 'none';
-        }
-    };
-</script>
-    
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const likeButtons = document.querySelectorAll('.fa-heart');
-    
-            likeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const likesCountElement = button.closest('.actions').nextElementSibling;
-                    let likes = parseInt(likesCountElement.textContent);
-    
-                    if (button.style.color === 'red') {
-                        button.style.color = 'black';
-                        likes--;
-                    } else {
-                        button.style.color = 'red';
-                        likes++;
-                    }
-    
-                    likesCountElement.textContent = `${likes} likes`;
-                });
-            });
-    
-            const commentButtons = document.querySelectorAll('.fa-comment');
-            commentButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Comment feature is triggered! Add your functionality here.');
-                });
-            });
-    
- 
-            const sendButtons = document.querySelectorAll('.fa-paper-plane');
-            sendButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Send feature is triggered! Add your functionality here.');
-                });
-            });
-        });
-    </script>
-    
-    
-    
-   
     <div class="stories">
-        <div class="story">
+        <div class="story" onclick="openStoryModal('image/dex.jpg')">
             <img src="image/dex.jpg" alt="Your Story">
             <p>Your Story</p>
         </div>
-        <div class="story">
-            <img src="image/jherv.jpg" alt="jhervin">
+        <div class="story" onclick="openStoryModal('image/jherv.jpg')">
+            <img src="image/jherv.jpg" alt="Jhervin">
             <p>Jhervin</p>
         </div>
-        <div class="story">
+        <div class="story" onclick="openStoryModal('image/mark.jpg')">
             <img src="image/mark.jpg" alt="Mark">
             <p>Mark Lawrence</p>
         </div>
-        <div class="story">
+        <div class="story" onclick="openStoryModal('image/raf.jpg')">
             <img src="image/raf.jpg" alt="Raf">
             <p>Rafael</p>
         </div>
-        <div class="story">
+        <div class="story" onclick="openStoryModal('image/jay.jpg')">
             <img src="image/jay.jpg" alt="Jay">
             <p>Jay</p>
         </div>
     </div>
 
-   
     <div class="posts">
         <div class="post">
             <img src="image/raaf.jpg" alt="raf">
@@ -396,8 +391,17 @@
         </div>
     </div>
 
-    <div class="modal" id="searchModal">
+   
+    <div class="modal" id="storyModal">
         <div class="modal-content">
+            <button class="close" onclick="closeStoryModal()">&times;</button>
+            <img id="storyImage" src="" alt="Story Image">
+        </div>
+    </div>
+
+  
+    <div id="searchModal" class="modal">
+        <div class="search-modal-content">
             <h2>Search</h2>
             <input type="text" placeholder="Type to search..." id="searchInput">
             <button onclick="performSearch()">Search</button>
@@ -405,7 +409,18 @@
     </div>
 
     <script>
-        function toggleModal() {
+       
+        function openStoryModal(imageSrc) {
+            document.getElementById('storyImage').src = imageSrc;
+            document.getElementById('storyModal').classList.add('active');
+        }
+
+        function closeStoryModal() {
+            document.getElementById('storyModal').classList.remove('active');
+        }
+
+       
+        function toggleSearchModal() {
             const modal = document.getElementById('searchModal');
             modal.classList.toggle('active');
         }
@@ -413,17 +428,31 @@
         function performSearch() {
             const searchQuery = document.getElementById('searchInput').value;
             alert(`Searching for: ${searchQuery}`);
-            toggleModal();
+            toggleSearchModal(); 
         }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('searchModal');
-            if (event.target === modal) {
-                toggleModal();
+        window.onclick = function (event) {
+            const searchModal = document.getElementById('searchModal');
+            const storyModal = document.getElementById('storyModal');
+            if (event.target === searchModal) {
+                toggleSearchModal();
+            } else if (event.target === storyModal) {
+                closeStoryModal();
             }
         };
 
         
+        function toggleMenu() {
+            const menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.onclick = function (event) {
+            const menuDropdown = document.getElementById('menuDropdown');
+            if (event.target.closest('.menu') === null) {
+                menuDropdown.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>
