@@ -326,7 +326,6 @@
             background-color: #287acb;
         }
 
-        /* Toggle Dark Mode Button */
         .toggle-dark-mode {
             background-color: #333;
             color: #fff;
@@ -344,6 +343,8 @@
 
     </style>
 </head>
+
+
 <body class="light-mode">
 
     <div class="header">
@@ -362,7 +363,7 @@
             <img src="image/dex.jpg" alt="User profile picture">
         </div>
     </div>
-    
+
 
     <div class="stories">
         <div class="story" onclick="openStoryModal('image/dex.jpg')">
@@ -387,7 +388,54 @@
         </div>
     </div>
 
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <button class="close" onclick="closeStoryModal()">&times;</button>
+            <img id="storyImage" src="" alt="Story Image">
+            <div class="navigate-buttons">
+                <i class="fas fa-chevron-left" onclick="changeStory('back')"></i>
+                <i class="fas fa-chevron-right" onclick="changeStory('next')"></i>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let stories = [
+            'image/dex.jpg',
+            'image/jherv.jpg',
+            'image/mark.jpg',
+            'image/raf.jpg',
+            'image/jay.jpg'
+        ];
+
+        let currentStoryIndex = 0;
+
+        function openStoryModal(imageSrc) {
+            currentStoryIndex = stories.indexOf(imageSrc);  
+            document.getElementById('storyImage').src = imageSrc;
+            document.getElementById('storyModal').classList.add('active');
+        }
+
+        function closeStoryModal() {
+            document.getElementById('storyModal').classList.remove('active');
+        }
+
+        function changeStory(direction) {
+            if (direction === 'next') {
+                currentStoryIndex = (currentStoryIndex + 1) % stories.length;
+            } else if (direction === 'back') {
+                currentStoryIndex = (currentStoryIndex - 1 + stories.length) % stories.length;
+            }
+            document.getElementById('storyImage').src = stories[currentStoryIndex];
+        }
+
+        window.onclick = function (event) {
+            const storyModal = document.getElementById('storyModal');
+            if (event.target === storyModal) {
+                closeStoryModal();
+            }
+        };
+
         function toggleMenu() {
             const menuDropdown = document.getElementById('menuDropdown');
             menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
@@ -400,45 +448,61 @@
             }
         };
     </script>
-        
+ <script>
+       function toggleMenu() {
+        const menuDropdown = document.getElementById('menuDropdown');
+        menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+
+    window.onclick = function (event) {
+        const menuDropdown = document.getElementById('menuDropdown');
+        if (event.target.closest('.menu') === null) {
+            menuDropdown.style.display = 'none';
+        }
+    };
+</script>
     
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const likeButtons = document.querySelectorAll('.fa-heart');
-        
-                likeButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const likesCountElement = button.closest('.actions').nextElementSibling;
-                        let likes = parseInt(likesCountElement.textContent);
-        
-                        if (button.style.color === 'red') {
-                            button.style.color = 'black';
-                            likes--;
-                        } else {
-                            button.style.color = 'red';
-                            likes++;
-                        }
-        
-                        likesCountElement.textContent = `${likes} likes`;
-                    });
-                });
-        
-                const commentButtons = document.querySelectorAll('.fa-comment');
-                commentButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        alert('Comment feature is triggered! Add your functionality here.');
-                    });
-                });
-        
-     
-                const sendButtons = document.querySelectorAll('.fa-paper-plane');
-                sendButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        alert('Send feature is triggered! Add your functionality here.');
-                    });
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeButtons = document.querySelectorAll('.fa-heart');
+    
+            likeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const likesCountElement = button.closest('.actions').nextElementSibling;
+                    let likes = parseInt(likesCountElement.textContent);
+    
+                    if (button.style.color === 'red') {
+                        button.style.color = 'black';
+                        likes--;
+                    } else {
+                        button.style.color = 'red';
+                        likes++;
+                    }
+    
+                    likesCountElement.textContent = `${likes} likes`;
                 });
             });
-            </script>
+    
+            const commentButtons = document.querySelectorAll('.fa-comment');
+            commentButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Comment feature is triggered! Add your functionality here.');
+                });
+            });
+    
+ 
+            const sendButtons = document.querySelectorAll('.fa-paper-plane');
+            sendButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Send feature is triggered! Add your functionality here.');
+                });
+            });
+        });
+ </script>
+
+            
 
     <div class="posts">
         <div class="post">

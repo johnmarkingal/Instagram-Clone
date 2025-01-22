@@ -133,7 +133,6 @@
 </head>
 <body>
    
-    <!-- Header Section -->
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
         <div class="icons">
@@ -150,31 +149,31 @@
         </div>
     </div>
 
-    <!-- Main Content Section -->
+
     <div class="content">
         <div class="gif-grid" id="gifGrid"></div>
     </div>
 
     <script>
-        // Array of GIF URLs
+
         const gifURLs = [
-    "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",  // Cat
-    "https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif",  // Puppy
-    "https://media.giphy.com/media/26u4vIltfyf8N7zfw/giphy.gif",  // Sloth
-    "https://media.giphy.com/media/1g4HFv7lZh6VtSzQ3D/giphy.gif",  // Laughing Man
-    "https://media.giphy.com/media/1xcwzSkL6j6f4/giphy.gif",  // Dancing Baby
-    "https://media.giphy.com/media/YK40LZT0AnUwY/giphy.gif",  // Facepalm
-    "https://media.giphy.com/media/2tXvOgWQjlNcy9Xo3a/giphy.gif",  // Spider-Man
-    "https://media.giphy.com/media/hcOpZ9FgCmVek/giphy.gif",  // Star Wars
-    "https://media.giphy.com/media/UwSBM1RmOP7RM/giphy.gif",  // Avengers
-    "https://media.giphy.com/media/13P42QxHz3dIE0/giphy.gif"  // Excited
+    "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",  
+    "https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif",  
+    "https://media.giphy.com/media/26u4vIltfyf8N7zfw/giphy.gif",  
+    "https://media.giphy.com/media/1g4HFv7lZh6VtSzQ3D/giphy.gif",  
+    "https://media.giphy.com/media/1xcwzSkL6j6f4/giphy.gif", 
+    "https://media.giphy.com/media/YK40LZT0AnUwY/giphy.gif",  
+    "https://media.giphy.com/media/2tXvOgWQjlNcy9Xo3a/giphy.gif",  
+    "https://media.giphy.com/media/hcOpZ9FgCmVek/giphy.gif",  
+    "https://media.giphy.com/media/UwSBM1RmOP7RM/giphy.gif",  
+    "https://media.giphy.com/media/13P42QxHz3dIE0/giphy.gif"  
 ];
 
-        // Total number of GIFs to display
+       
         const totalGIFs = 12;
         const gifGrid = document.getElementById('gifGrid');
 
-        // Display GIFs in the grid
+
         for (let i = 0; i < totalGIFs; i++) {
             const gifIndex = i % gifURLs.length; 
             const img = document.createElement('img');
@@ -183,13 +182,13 @@
             gifGrid.appendChild(img);
         }
 
-        // Toggle the menu visibility
+  
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('open');
         }
 
-        // Toggle search modal (if needed)
+       
         function toggleSearchModal() {
             alert("Search functionality goes here!");
         }
