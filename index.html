@@ -14,13 +14,13 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Light Mode */
+       
         .light-mode {
             background-color: #fff;
             color: #000;
         }
 
-        /* Dark Mode */
+        
         .dark-mode {
             background-color: #181818;
             color: #fff;
@@ -362,6 +362,7 @@
             <img src="image/dex.jpg" alt="User profile picture">
         </div>
     </div>
+    
 
     <div class="stories">
         <div class="story" onclick="openStoryModal('image/dex.jpg')">
@@ -385,6 +386,59 @@
             <p>Jay</p>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        window.onclick = function (event) {
+            const menuDropdown = document.getElementById('menuDropdown');
+            if (event.target.closest('.menu') === null) {
+                menuDropdown.style.display = 'none';
+            }
+        };
+    </script>
+        
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const likeButtons = document.querySelectorAll('.fa-heart');
+        
+                likeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const likesCountElement = button.closest('.actions').nextElementSibling;
+                        let likes = parseInt(likesCountElement.textContent);
+        
+                        if (button.style.color === 'red') {
+                            button.style.color = 'black';
+                            likes--;
+                        } else {
+                            button.style.color = 'red';
+                            likes++;
+                        }
+        
+                        likesCountElement.textContent = `${likes} likes`;
+                    });
+                });
+        
+                const commentButtons = document.querySelectorAll('.fa-comment');
+                commentButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        alert('Comment feature is triggered! Add your functionality here.');
+                    });
+                });
+        
+     
+                const sendButtons = document.querySelectorAll('.fa-paper-plane');
+                sendButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        alert('Send feature is triggered! Add your functionality here.');
+                    });
+                });
+            });
+            </script>
 
     <div class="posts">
         <div class="post">
@@ -477,7 +531,7 @@
     </div>
 
     <script>
-        // Toggle between dark and light mode
+       
         function toggleDarkMode() {
             const body = document.body;
             const header = document.querySelector('.header');
@@ -494,7 +548,7 @@
             menuDropdown.classList.toggle('dark-mode');
         }
 
-        // Existing functionality
+     
         function openStoryModal(imageSrc) {
             document.getElementById('storyImage').src = imageSrc;
             document.getElementById('storyModal').classList.add('active');
@@ -536,6 +590,7 @@
                 menuDropdown.style.display = 'none';
             }
         };
+        
     </script>
 </body>
 </html>
