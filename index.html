@@ -205,11 +205,56 @@
             <a href="index.html"><i class="fas fa-home"></i></a>
             <i class="fas fa-search" onclick="toggleModal()"></i>
             <a href="mockup.html"><i class="fas fa-compass"></i></a>
-            <i class="fas fa-bars"></i>
+            <div class="menu">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <a href="login.html" class="logout-button">Logout</a>
+                </div>
+            </div>
             <img src="image/dex.jpg" alt="User profile picture">
-            <a href="login.html" class="logout-button">Logout</a>
         </div>
     </div>
+    <style>
+        .menu {
+            position: relative;
+        }
+    
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--header-bg);
+            border: 1px solid var(--header-border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+        }
+    
+        .menu-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 14px;
+        }
+    
+    </style>
+<script>
+    function toggleMenu() {
+        const menuDropdown = document.getElementById('menuDropdown');
+        menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Close the menu if clicked outside
+    window.onclick = function (event) {
+        const menuDropdown = document.getElementById('menuDropdown');
+        if (event.target.closest('.menu') === null) {
+            menuDropdown.style.display = 'none';
+        }
+    };
+</script>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -328,7 +373,7 @@
                     </div>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
-                <p class="likes">3,901 likes</p>
+                <p class="likes">3 likes</p>
             </div>
         </div>
         <div class="post">
