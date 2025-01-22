@@ -177,10 +177,28 @@
         .modal-content button:hover {
             background-color: #287acb;
         }
+        .logout-button {
+    margin-left: 20px;
+    padding: 5px 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    background-color: #3897f0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logout-button:hover {
+    background-color: #287acb;
+}
+
+
+
     </style>
 </head>
 <body>
-   
+    
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
         <div class="icons">
@@ -189,9 +207,50 @@
             <a href="mockup.html"><i class="fas fa-compass"></i></a>
             <i class="fas fa-bars"></i>
             <img src="image/dex.jpg" alt="User profile picture">
+            <a href="login.html" class="logout-button">Logout</a>
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeButtons = document.querySelectorAll('.fa-heart');
+    
+            likeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const likesCountElement = button.closest('.actions').nextElementSibling;
+                    let likes = parseInt(likesCountElement.textContent);
+    
+                    if (button.style.color === 'red') {
+                        button.style.color = 'black';
+                        likes--;
+                    } else {
+                        button.style.color = 'red';
+                        likes++;
+                    }
+    
+                    likesCountElement.textContent = `${likes} likes`;
+                });
+            });
+    
+            const commentButtons = document.querySelectorAll('.fa-comment');
+            commentButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Comment feature is triggered! Add your functionality here.');
+                });
+            });
+    
+ 
+            const sendButtons = document.querySelectorAll('.fa-paper-plane');
+            sendButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Send feature is triggered! Add your functionality here.');
+                });
+            });
+        });
+    </script>
+    
+    
+    
    
     <div class="stories">
         <div class="story">
@@ -318,6 +377,8 @@
                 toggleModal();
             }
         };
+
+        
     </script>
 </body>
 </html>
