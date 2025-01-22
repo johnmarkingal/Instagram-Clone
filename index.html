@@ -11,6 +11,19 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light Mode */
+        .light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #181818;
+            color: #fff;
         }
 
         .header {
@@ -23,6 +36,12 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .header.dark-mode {
+            background-color: #181818;
+            border-bottom: 1px solid #333;
         }
 
         .header img {
@@ -47,12 +66,68 @@
             margin-left: 20px;
         }
 
+        /* Menu */
+        .menu {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 120px;
+        }
+
+        .menu-dropdown.dark-mode {
+            background-color: #333;
+            border: 1px solid #444;
+        }
+
+        .menu-dropdown a, .menu-dropdown button {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            border: none;
+            background-color: transparent;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .menu-dropdown a:hover, .menu-dropdown button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .menu-dropdown.dark-mode a, .menu-dropdown.dark-mode button {
+            color: #fff;
+            background-color: #444;
+        }
+
+        .menu-dropdown.dark-mode a:hover, .menu-dropdown.dark-mode button:hover {
+            background-color: #555;
+        }
+
         .stories {
             display: flex;
             padding: 20px;
             background-color: #fff;
             border-bottom: 1px solid #dbdbdb;
             overflow-x: auto;
+            transition: background-color 0.3s;
+        }
+
+        .stories.dark-mode {
+            background-color: #181818;
+            border-bottom: 1px solid #333;
         }
 
         .story {
@@ -86,6 +161,12 @@
             background-color: #fff;
             border: 1px solid #dbdbdb;
             border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .post.dark-mode {
+            background-color: #2a2a2a;
+            border-color: #444;
         }
 
         .post img {
@@ -129,6 +210,7 @@
             font-weight: 500;
         }
 
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -193,35 +275,6 @@
             background-color: #287acb;
         }
 
-        .menu {
-            position: relative;
-        }
-
-        .menu-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #fff;
-            border: 1px solid #dbdbdb;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 10;
-            min-width: 120px;
-        }
-
-        .menu-dropdown a {
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #000;
-            font-size: 14px;
-        }
-
-        .menu-dropdown a:hover {
-            background-color: #f0f0f0;
-        }
-
         /* Search Modal */
         #searchModal {
             display: none;
@@ -273,9 +326,25 @@
             background-color: #287acb;
         }
 
+        /* Toggle Dark Mode Button */
+        .toggle-dark-mode {
+            background-color: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-dark-mode:hover {
+            background-color: #444;
+        }
+
     </style>
 </head>
-<body>
+<body class="light-mode">
 
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
@@ -286,6 +355,7 @@
             <div class="menu">
                 <i class="fas fa-bars" onclick="toggleMenu()"></i>
                 <div class="menu-dropdown" id="menuDropdown">
+                    <button class="toggle-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
                     <a href="login.html" class="logout-button">Logout</a>
                 </div>
             </div>
@@ -391,7 +461,6 @@
         </div>
     </div>
 
-   
     <div class="modal" id="storyModal">
         <div class="modal-content">
             <button class="close" onclick="closeStoryModal()">&times;</button>
@@ -399,7 +468,6 @@
         </div>
     </div>
 
-  
     <div id="searchModal" class="modal">
         <div class="search-modal-content">
             <h2>Search</h2>
@@ -409,7 +477,24 @@
     </div>
 
     <script>
-       
+        // Toggle between dark and light mode
+        function toggleDarkMode() {
+            const body = document.body;
+            const header = document.querySelector('.header');
+            const stories = document.querySelector('.stories');
+            const posts = document.querySelectorAll('.post');
+            const modal = document.querySelectorAll('.modal');
+            const menuDropdown = document.getElementById('menuDropdown');
+
+            body.classList.toggle('dark-mode');
+            header.classList.toggle('dark-mode');
+            stories.classList.toggle('dark-mode');
+            posts.forEach(post => post.classList.toggle('dark-mode'));
+            modal.forEach(m => m.classList.toggle('dark-mode'));
+            menuDropdown.classList.toggle('dark-mode');
+        }
+
+        // Existing functionality
         function openStoryModal(imageSrc) {
             document.getElementById('storyImage').src = imageSrc;
             document.getElementById('storyModal').classList.add('active');
@@ -419,7 +504,6 @@
             document.getElementById('storyModal').classList.remove('active');
         }
 
-       
         function toggleSearchModal() {
             const modal = document.getElementById('searchModal');
             modal.classList.toggle('active');
@@ -441,7 +525,6 @@
             }
         };
 
-        
         function toggleMenu() {
             const menuDropdown = document.getElementById('menuDropdown');
             menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';

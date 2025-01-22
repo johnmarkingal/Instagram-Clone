@@ -14,7 +14,7 @@
             padding: 0;
         }
 
-       
+        /* Header Section */
         .header {
             display: flex;
             justify-content: space-between;
@@ -49,7 +49,7 @@
             margin-left: 20px;
         }
 
-        
+        /* Dropdown Menu */
         .menu {
             position: relative;
             display: inline-block;
@@ -81,37 +81,38 @@
             background-color: #fafafa;
         }
 
-        
         .menu.open .menu-dropdown {
             display: block;
         }
 
-        
         .logout-button {
-            color: #f44336; 
+            color: #f44336;
             text-align: center;
             font-weight: bold;
         }
 
-       
+        /* Main Content Section */
         .content {
             padding: 20px;
         }
 
-        
+        /* GIF Grid */
         .gif-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+            gap: 20px; /* Increased gap between GIFs */
             padding: 20px;
         }
 
         .gif-grid img {
             width: 100%;
+            height: 300px; /* Increased height of GIFs */
+            object-fit: cover; /* Ensures the images fit within the container */
             border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
         }
 
-        
+        /* Sidebar Button */
         .sidebar {
             position: fixed;
             right: 20px;
@@ -132,7 +133,7 @@
 </head>
 <body>
    
-    
+    <!-- Header Section -->
     <div class="header">
         <img src="https://logos-world.net/wp-content/uploads/2020/06/Instagram-Logo.png" alt="Instagram logo">
         <div class="icons">
@@ -149,31 +150,31 @@
         </div>
     </div>
 
-    
+    <!-- Main Content Section -->
     <div class="content">
         <div class="gif-grid" id="gifGrid"></div>
     </div>
 
     <script>
-       
+        // Array of GIF URLs
         const gifURLs = [
-            "https://media.giphy.com/media/3o6ZsWmQdPgl9SG7Di/giphy.gif",
-            "https://media.giphy.com/media/3ohzdYJK1wAdPWVk88/giphy.gif",
-            "https://media.giphy.com/media/l0HlNqxY4N69vjxg8/giphy.gif",
-            "https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif",
-            "https://media.giphy.com/media/l0Ex5F41N5iVh8q2Q/giphy.gif",
-            "https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif",
-            "https://media.giphy.com/media/3ohc18H1Y6Fw2G1yOY/giphy.gif",
-            "https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif",
-            "https://media.giphy.com/media/l0ErLEZv6RPrVJbQA/giphy.gif",
-            "https://media.giphy.com/media/l2JJLZfCLHl4KgF84/giphy.gif"
-        ];
+    "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",  // Cat
+    "https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif",  // Puppy
+    "https://media.giphy.com/media/26u4vIltfyf8N7zfw/giphy.gif",  // Sloth
+    "https://media.giphy.com/media/1g4HFv7lZh6VtSzQ3D/giphy.gif",  // Laughing Man
+    "https://media.giphy.com/media/1xcwzSkL6j6f4/giphy.gif",  // Dancing Baby
+    "https://media.giphy.com/media/YK40LZT0AnUwY/giphy.gif",  // Facepalm
+    "https://media.giphy.com/media/2tXvOgWQjlNcy9Xo3a/giphy.gif",  // Spider-Man
+    "https://media.giphy.com/media/hcOpZ9FgCmVek/giphy.gif",  // Star Wars
+    "https://media.giphy.com/media/UwSBM1RmOP7RM/giphy.gif",  // Avengers
+    "https://media.giphy.com/media/13P42QxHz3dIE0/giphy.gif"  // Excited
+];
 
-        
-        const totalGIFs = 100;
+        // Total number of GIFs to display
+        const totalGIFs = 12;
         const gifGrid = document.getElementById('gifGrid');
 
-        
+        // Display GIFs in the grid
         for (let i = 0; i < totalGIFs; i++) {
             const gifIndex = i % gifURLs.length; 
             const img = document.createElement('img');
@@ -182,13 +183,13 @@
             gifGrid.appendChild(img);
         }
 
-       
+        // Toggle the menu visibility
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('open');
         }
 
-        
+        // Toggle search modal (if needed)
         function toggleSearchModal() {
             alert("Search functionality goes here!");
         }
